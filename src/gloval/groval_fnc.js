@@ -1,3 +1,4 @@
+//物理空間作成
 function set_World(scene){
   world = new cp.Space();
   world.gravity = cp.v(0, -600);
@@ -6,14 +7,16 @@ function set_World(scene){
   scene.addChild(debugDraw, 3);
 };
 
+//矢印作成
 function create_obj(layer){
   Graphic = new cc.DrawNode();
   layer.addChild(Graphic);
   Arrow = [cc.p(0, 0), cc.p(-50, -60), cc.p(-10, -60),cc.p(0, -130) , cc.p(10, -60), cc.p(50, -60)];
   Graphic.drawPoly(Arrow, cc.color(255, 0, 0, 255), 3, cc.color(255, 128, 128, 255));
-  Graphic.setPosition(pl_sprite.getPosition());
+  Graphic.setPosition(player_set[0].getPosition());
 };
 
+//矢印修正
 function calcDirection(){
   var distX = current_pos.x - farst_pos.x ;
   var distY = current_pos.y - farst_pos.y ;

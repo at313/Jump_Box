@@ -19,7 +19,8 @@ var res = {
   en2_png: "res/img/en2.png",
   pl_png: "res/img/pl.png",
   hata1_png: "res/img/hata1.png",
-  test_tmx: "res/img/test.tmx",
+  map_chip: "res/img/maptile.png",
+  test_tmx: "res/img/test00.tmx",
   bgm: "res/bgm_se/bgm.mp3"
 };
 

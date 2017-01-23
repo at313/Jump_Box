@@ -37,7 +37,7 @@ var GBrock = cc.PhysicsSprite.extend({
     hata.setBody(g_body);
 
     hata.shape = new cp.BoxShape(g_body, 33, 50);
-    hata.shape.setCollisionType(SpriteTag.gool);
+    this.shape.setCollisionType(SpriteTag.gool);
     hata.shape.setSensor(true);
 
     world.addStaticShape(hata.shape);

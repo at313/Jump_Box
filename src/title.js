@@ -22,13 +22,15 @@ var Title_Layer = cc.Layer.extend({
   ctor: function(){
     this._super();
 
-    bgm_flg = true;
+    audio = cc.audioEngine;
+    audio.playMusic(res.bgm, true);
+    status_flg[0] = true;
 
-    s1_flg = true;
-    s2_flg = false;
-    s3_flg = false;
-    s4_flg = false;
-    s5_flg = false;
+    stage_flg[0] = true;
+    stage_flg[1] = false;
+    stage_flg[2] = false;
+    stage_flg[3] = false;
+    stage_flg[4] = false;
 
     var background = new BackGroundLayer();
     this.addChild(background);

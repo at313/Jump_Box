@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="24" tileheight="24" nextobjectid="1">
+ <tileset firstgid="1" name="block" tilewidth="24" tileheight="24" tilecount="7" columns="7">
+  <image source="maptile.png" width="168" height="24"/>
+ </tileset>
+ <layer name="stage" width="24" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6AHYc4oxUwExIeBQQBwAu6AAf
+  </data>
+ </layer>
+</map>

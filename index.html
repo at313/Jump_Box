@@ -3,20 +3,21 @@
 <head>
     <title>Sir_Amesomealot</title>
     <script type="text/javascript" src="cocos2d-js-v3.11.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/resource.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/gloval/groval_fnc.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/gloval/groval_date.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/gloval/background.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/gloval/blocks.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/title.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/level_select.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/level1.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/level2.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/level3.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/level4.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/level5.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/background.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/resource.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/groval_fnc.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/groval_date.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/clear.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/over.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="src/blocks.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/stage/level1.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/stage/level2.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/stage/level3.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/stage/level4.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/stage/level5.js" charset="UTF-8"></script>
+
 </head>
 <body>
     <canvas id="gameCanvas" ></canvas>
@@ -26,12 +27,10 @@
                   //load resources
                   // プログラムの画面全体を表示領域の画面に合わせる　Adjust viewport meta
                    cc.view.adjustViewPort(true);
-
                   //画面の縦横比をドットで指定する  ターゲットの解像度を指定し、ゲームキャンバスをブラウザのウインドサイズに合わせる
                   cc.view.setDesignResolutionSize(960,640,  cc.ResolutionPolicy.SHOW_ALL);
                   // 表示領域がリサイズされた場合、自動的にプログラムの画面をリサイズさせる
                   cc.view.resizeWithBrowserSize(true);
-
                   cc.LoaderScene.preload(g_resources, function () {
                        cc.director.runScene(new TitleScene());
                   }, this);

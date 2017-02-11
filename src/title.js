@@ -27,9 +27,10 @@ var Title_Layer = cc.Layer.extend({
     status_flg[0] = true;
     score = 0;
 
+    // 各ステージの表示フラグ
     stage_flg[0] = true;
-    stage_flg[1] = false;
-    stage_flg[2] = false;
+    stage_flg[1] = true;
+    stage_flg[2] = true;
     stage_flg[3] = true;
     stage_flg[4] = true;
 

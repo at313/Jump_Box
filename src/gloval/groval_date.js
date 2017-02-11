@@ -1,6 +1,7 @@
 var world;
 var size;
 var audio;
+var over_flg;
 //矢印表示用関数
 var Graphic;
 var Arrow;
@@ -15,6 +16,7 @@ var stage_sprite = [4];
 var stage_flg = [4];
 var select_touch = [4];
 //各ステージごとのブロック配置用関数
+var callbacks = [];
 var l1_n = [];
 var l2_n = [];
 var l3_n = [];
@@ -27,6 +29,8 @@ var jump;
 var score_label;
 var bonus_label;
 var jump_label;
+var shapeArray = [];
+var objectArray = [];
 //ステータスボタン配列
 //配列 [0:BGM],[1:MENU],[2:RESET],[3:Try Again]
 var status_button = [3];
@@ -43,6 +47,9 @@ var pw_y;
 //リザルト画面表示用関数
 var r_bonus;
 var r_jump;
+//アニメーションカウント
+var anim_pl;
+var anim_hata = [];
 //衝突判定用Type設定
 if(typeof SpriteTag == "undefined") {
     var SpriteTag = {};
@@ -51,4 +58,7 @@ if(typeof SpriteTag == "undefined") {
     SpriteTag.gool = 1;
     SpriteTag.boro = 2;
     SpriteTag.el = 3;
+    SpriteTag.hata = 4;
+    SpriteTag.en1 = 5;
+    SpriteTag.en2 = 6;
 };

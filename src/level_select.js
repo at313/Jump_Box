@@ -11,7 +11,8 @@ var Select_Layer = cc.Layer.extend({
   ctor: function(){
     this._super();
 
-    score = 0;
+    over_flg = false;
+    //score = 0;
     for (var i = 0; i < select_touch.length; i++) {
       select_touch[i] = false;
     }
@@ -118,22 +119,22 @@ var Select_Layer = cc.Layer.extend({
     if (select_touch[1] == true) {
       select_touch[1] = false;
       stage_sprite[1].setOpacity(255);
-      //cc.director.runScene(new level2_Scene);
+      cc.director.runScene(cc.TransitionFade.create(1,new level2_Scene()));
     }
     if (select_touch[2] == true) {
       select_touch[2] = false;
       stage_sprite[2].setOpacity(255);
-      //cc.director.runScene(new level3_Scene);
+      cc.director.runScene(cc.TransitionFade.create(1,new level3_Scene()));
     }
     if (select_touch[3] == true) {
       select_touch[3] = false;
       stage_sprite[3].setOpacity(255);
-      //cc.director.runScene(new level4_Scene);
+      cc.director.runScene(cc.TransitionFade.create(1,new level4_Scene()));
     }
     if (select_touch[4] == true) {
       select_touch[4] = false;
       stage_sprite[4].setOpacity(255);
-      //cc.director.runScene(new level5_Scene);
+      cc.director.runScene(cc.TransitionFade.create(1,new level5_Scene()));
     }
   }
 });

@@ -25,12 +25,13 @@ var Title_Layer = cc.Layer.extend({
     audio = cc.audioEngine;
     audio.playMusic(res.bgm, true);
     status_flg[0] = true;
+    score = 0;
 
     stage_flg[0] = true;
     stage_flg[1] = false;
     stage_flg[2] = false;
-    stage_flg[3] = false;
-    stage_flg[4] = false;
+    stage_flg[3] = true;
+    stage_flg[4] = true;
 
     var background = new BackGroundLayer();
     this.addChild(background);

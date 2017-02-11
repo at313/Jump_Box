@@ -1,9 +1,9 @@
 //物理空間作成
 function set_World(scene){
   world = new cp.Space();
-  world.gravity = cp.v(0, -600);
+  world.gravity = cp.v(0, -100);
   var debugDraw = cc.PhysicsDebugNode.create(world);
-  debugDraw.setVisible(true);
+  debugDraw.setVisible(false);
   scene.addChild(debugDraw, 3);
 };
 

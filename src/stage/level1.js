@@ -13,6 +13,7 @@ var level1_Scene =  cc.Scene.extend({
 var level1Layer = cc.Layer.extend({
   ctor: function(){
     this._super();
+    anim_pl = 0;
     jump = 0;
     bonus = 9999;
     pw_x = 0;
@@ -62,12 +63,23 @@ var level1Layer = cc.Layer.extend({
 
     world.addCollisionHandler(SpriteTag.pl, SpriteTag.gool,
             this.game_clear.bind(this), null, null, null);
+    world.addCollisionHandler(SpriteTag.pl, SpriteTag.boro,
+            this.block_ban.bind(this), null, null, this.boro_block.bind(this));
+    world.addCollisionHandler(SpriteTag.pl, SpriteTag.nomal,
+            this.block_ban.bind(this), null, null, null);
+    world.addCollisionHandler(SpriteTag.pl, SpriteTag.el,
+            this.block_ban.bind(this), null, null, null);
+    world.addCollisionHandler(SpriteTag.pl, SpriteTag.en2,
+            this.game_over.bind(this), null, null, null);
 
-    player_set[0] = new cc.Sprite.create(res.pl_png);
+    //var a = new Block_EL(this, 200, 200);
+    //var b = new Enemy1(this, 200, 200);
+
+    player_set[0] = new cc.Sprite.create(res.pl0_png);
     this.addChild(player_set[0]);
-    player_set[0].setPosition(240, 200);
+    player_set[0].setPosition(100, 200);
     player_set[1] = new cp.Body(1,cp.momentForBox(1, 30, 30));
-    player_set[1].setPos(cp.v(240, 200));
+    player_set[1].setPos(cp.v(100, 200));
     world.addBody(player_set[1]);
     player_set[2] = new cp.BoxShape(player_set[1], 30, 30);
     player_set[2].setFriction(0.5);
@@ -86,15 +98,48 @@ var level1Layer = cc.Layer.extend({
 
     this.scheduleUpdate();
 
-    var map = new cc.TMXTiledMap(res.test_tmx);
-    this.addChild(map);
-
+    var map = new Tiledmap(this, res.test_tmx);
+    },
+    block_ban: function(){
+      var exp = new cc.ParticleSystem(res.block_plist);
+      exp.setPosition(cc.p(player_set[0].getPositionX(), player_set[0].getPositionY()-12));
+      this.addChild(exp, 5);
+      exp.setAutoRemoveOnFinish(true);
+      audio.playEffect(res.se_ban);
+      return true;
     },
     game_clear: function(){
       r_bonus = bonus;
       r_jump = jump;
       stage_flg[1] = true;
+      audio.playEffect(res.se_cler);
       cc.director.runScene(cc.TransitionFade.create(1, new ClearScene()));
+      return true;
+    },
+    game_over: function(){
+      audio.playEffect(res.se_over);
+      cc.director.runScene(cc.TransitionFade.create(1, new OverScene(new level1_Scene())));
+      return true;
+    },
+    boro_block: function(arbiter, space){
+      if (arbiter.b.tag == SpriteTag.boro) {
+            var collision_obj = arbiter.b; // 衝突したShapeの取得
+         }
+         //衝突したオブジェクトを消すのは、update関数で定期的に行う
+         this.addCallback(function() {
+            for (var int = 0; int < objectArray.length; int++) { // 衝突したコインを探す
+               var object = objectArray[int]; // 配置済みオブジェクトの取得
+               if (object.shape == collision_obj) { // 衝突したコインの場合
+                  console.log("hit");
+                  object.removeFromParent();
+                  break; // 処理を抜ける
+               }
+            }
+         }.bind(this));
+      return true;
+    },
+    addCallback: function(callback) {
+      callbacks.push(callback);
     },
     update: function(dt){
     player_set[2].image.x = player_set[2].body.p.x
@@ -102,12 +147,35 @@ var level1Layer = cc.Layer.extend({
     var angle = Math.atan2(-player_set[2].body.rot.y, player_set[2].body.rot.x);
     player_set[2].image.rotation= angle*57.2957795;
 
+    anim_pl++;
+    if (anim_pl == 200) player_set[0].setTexture(res.pl1_png);
+    if (anim_pl == 230) player_set[0].setTexture(res.pl0_png);
+    if (anim_pl == 260) player_set[0].setTexture(res.pl1_png);
+    if (anim_pl == 290) {
+      player_set[0].setTexture(res.pl0_png);
+      anim_pl = 0;
+    }
+
     bonus--;
     bonus_label.setString("bonus:" + bonus, "Arial", 25);
 
     if (player_set[0].getPositionY() < 0) {
+      if (over_flg == false) {
+        audio.playEffect(res.se_over);
+        over_flg = true;
+      }
       cc.director.runScene(cc.TransitionFade.create(1, new OverScene(new level1_Scene())));
     }
+
+    for (var i = shapeArray.length - 1; i >= 0; i--) {
+         shapeArray[i].image.x = shapeArray[i].body.p.x;
+         shapeArray[i].image.y = shapeArray[i].body.p.y;
+      }
+
+      for (var i = 0; i < callbacks.length; ++i) {
+           callbacks[i]();
+        }
+        callbacks = [];
 
   },
   onTouchBegan: function(touch, event){
@@ -161,6 +229,7 @@ var level1Layer = cc.Layer.extend({
       pw_y = 0;
       jump+=1;
       jump_label.setString("jump:" + jump, "Arial", 25);
+      audio.playEffect(res.se_shot);
       touching = false;
     }
     if (status_flg[1] == true) {

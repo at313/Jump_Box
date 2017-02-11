@@ -15,6 +15,7 @@ var OverLayer = cc.Layer.extend({
   ctor: function(scene){
     this._super();
 
+    over_flg = false;
     var background = new BackGroundLayer();
     this.addChild(background);
 
@@ -67,6 +68,7 @@ var OverLayer = cc.Layer.extend({
     if (status_flg[1] == true) {
       status_flg[1] = false;
       status_button[1].setOpacity(255);
+      score = 0;
       cc.director.runScene(cc.TransitionFade.create(1, new SelectScene()));
     }
     if (status_flg[3] == true) {

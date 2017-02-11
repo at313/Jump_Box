@@ -12,6 +12,8 @@
     <script type="text/javascript" src="src/level_select.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/clear.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/over.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/tiledmap.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="src/objects.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/stage/level1.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/stage/level2.js" charset="UTF-8"></script>
     <script type="text/javascript" src="src/stage/level3.js" charset="UTF-8"></script>
@@ -28,7 +30,7 @@
                   // プログラムの画面全体を表示領域の画面に合わせる　Adjust viewport meta
                    cc.view.adjustViewPort(true);
                   //画面の縦横比をドットで指定する  ターゲットの解像度を指定し、ゲームキャンバスをブラウザのウインドサイズに合わせる
-                  cc.view.setDesignResolutionSize(960,640,  cc.ResolutionPolicy.SHOW_ALL);
+                  cc.view.setDesignResolutionSize(900,640,  cc.ResolutionPolicy.SHOW_ALL);
                   // 表示領域がリサイズされた場合、自動的にプログラムの画面をリサイズさせる
                   cc.view.resizeWithBrowserSize(true);
                   cc.LoaderScene.preload(g_resources, function () {

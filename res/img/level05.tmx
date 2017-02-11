@@ -40,7 +40,7 @@
  </tileset>
  <layer name="stage" width="35" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMAroD9hxiDPSGTMh4VEwdAAAWTAAKg==
+   eJxjYBgFo4C+gBGKBwMYdQt2gO4WFiiGicP4A+GWgQT0cgssrPGF8VANF2LSDSMapodb2Em0hxZuAWEmJDwK8AMA+LQAUQ==
   </data>
  </layer>
 </map>

@@ -11,6 +11,7 @@ var ClearLayer = cc.Layer.extend({
   ctor: function(){
     this._super();
 
+    over_flg = false;
     var background = new BackGroundLayer();
     this.addChild(background);
 

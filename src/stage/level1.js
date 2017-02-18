@@ -31,12 +31,12 @@ var level1Layer = cc.Layer.extend({
 
     score_label = cc.LabelTTF.create("score:" + score, "Arial", 25);
     score_label.setColor(cc.color(255, 255, 255, 255));
-    score_label.setPosition(size.width * 0.15, size.height * 0.95);
+    score_label.setPosition(size.width * 0.25, size.height * 0.95);
     this.addChild(score_label);
 
     bonus_label = cc.LabelTTF.create("bonus:" + bonus, "Arial", 25);
     bonus_label.setColor(cc.color(255, 255, 255, 255));
-    bonus_label.setPosition(size.width * 0.3, size.height * 0.95);
+    bonus_label.setPosition(size.width * 0.45, size.height * 0.95);
     this.addChild(bonus_label);
 
     jump_label = cc.LabelTTF.create("jump:" + jump, "Arial", 25);

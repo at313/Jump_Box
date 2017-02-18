@@ -11,7 +11,7 @@ function set_World(scene){
 function create_obj(layer){
   Graphic = new cc.DrawNode();
   layer.addChild(Graphic);
-  Arrow = [cc.p(0, 0), cc.p(-50, -60), cc.p(-10, -60),cc.p(0, -130) , cc.p(10, -60), cc.p(50, -60)];
+  Arrow = [cc.p(0, 0), cc.p(-30, -30), cc.p(-10, -30),cc.p(0, -60) , cc.p(10, -30), cc.p(30, -30)];
   Graphic.drawPoly(Arrow, cc.color(255, 0, 0, 255), 3, cc.color(255, 128, 128, 255));
   Graphic.setPosition(player_set[0].getPosition());
 };
@@ -21,8 +21,8 @@ function calcDirection(){
   var distX = current_pos.x - farst_pos.x ;
   var distY = current_pos.y - farst_pos.y ;
   var distZ = Math.sqrt(distX * distX + distY * distY);
-  if (distZ > 140) {
-    Arrow = [cc.p(0, 0), cc.p(-50, -60), cc.p(-10, -60),cc.p(0, -distZ) , cc.p(10, -60), cc.p(50, -60)];
+  if (distZ > 70) {
+    Arrow = [cc.p(0, 0), cc.p(-30, -30), cc.p(-10, -30),cc.p(0, -distZ) , cc.p(10, -30), cc.p(30, -30)];
     Graphic.drawPoly(Arrow, cc.color(255, 0, 0, 255), 3, cc.color(255, 128, 128, 255));
   }
   //角度（ラジアン）を求める

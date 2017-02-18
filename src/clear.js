@@ -30,7 +30,8 @@ var ClearLayer = cc.Layer.extend({
     bonus_label.setPosition(size.width * 0.5, size.height * 0.45);
     this.addChild(bonus_label);
 
-    var jump_label = cc.LabelTTF.create("JUMP : " + ((r_jump * -100) + 100), "Arial", 50);
+    r_jump = ((r_jump * -100) + 100);
+    var jump_label = cc.LabelTTF.create("JUMP : " + r_jump, "Arial", 50);
     jump_label.setColor(cc.color(0, 0, 0, 255));
     jump_label.setPosition(size.width * 0.5, size.height * 0.3);
     this.addChild(jump_label);
